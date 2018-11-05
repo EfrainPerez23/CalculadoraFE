@@ -1,5 +1,43 @@
 # Calculator
 
+Grupo: 1Il-141
+
+Integrantes Anaya, Daniel 8-917-1641
+
+Arrocha, Ariel 8-920-186
+
+Díaz, Rosa 8-908-1221
+
+González, Aarón 8-889-2342
+
+Ince, Abraham 8-914-1350
+
+Pérez, Efraín 8-902-309
+
+Brian Nieto 8-917-528
+
+Santiago Barría 8-912-2491
+
+Flor Martínez 8-917-2190
+
+Victor Ten 3-737-228
+
+# Pasos para configurar el proyecto #
+
+ 
+* Instalar node js 10+. Esto dependera del sistema operativo
+  * **Windows:** utilizar este link [NodeJS](https://nodejs.org)
+  * **Mac OS:** utilizar este link [NodeJS](https://nodejs.org)
+  * **Linux:** 
+        `$ sudo apt-get install nodejs npm`
+* Luedo de instalar nodeJs, se debe instalar globalmente `angular-cli`. Utilizar las siguientes lineas de comando
+  ```
+    npm install -g @angular/cli
+  ```
+* Para ejecutar el front end debe localizarse en la carpeta raiz del proyecto ( a nivel del archivo `package.json` ) debe       ejecutar la siguiente linea: `npm install`
+
+* Finalmente para ejectuar el programa utilizar la siguiente linea de comando: `ng s --o`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
 ## Development server
