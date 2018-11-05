@@ -5,10 +5,13 @@ import { AppComponent } from './app.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LexicoComponent } from './lexico/lexico.component';
+import { CalculatorService } from './calculator.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LexicoComponent,
   ],
   imports: [
     BrowserModule,
@@ -16,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [CalculatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

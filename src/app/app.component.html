@@ -2,7 +2,7 @@
   <h1>Calculadora</h1>
 
   <h4>Por favor introduzca las sentencias a analizar</h4>
-  <small class="text-danger">** Este analizador lexico no permite numeros flotantes</small>
+  <small class="text-danger">** Ésta calculadora no permite números flotantes</small>
 
   <ngx-codemirror [(ngModel)]="calculator"
   [options]="{
@@ -12,26 +12,23 @@
   }"
 ></ngx-codemirror>
   <div>
+      <button type="button" class="btn btn-primary my-4" [disabled]="!calculator" (click)="calcular()">Calcular</button>
   </div>
 
-  <!-- <div class="table-responsive" *ngIf="analizadorLexicoData && analizadorLexicoData.length > 0">
-    <table class="table table-borderless">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Linea</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Valor</th>
-          <th scope="col">Posicion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of analizadorLexicoData" [ngClass]="{'table-danger': !data.ok}">
-          <td>{{data.line}}</td>
-          <td>{{data.type}}</td>
-          <td>{{data.value}}</td>
-          <td>{{data.position}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
+<div class="calc-tabs" *ngIf="data" >
+  <nav>
+    <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-lexico-tab" data-toggle="tab" href="#nav-lexico" role="tab" aria-controls="nav-lexico" aria-selected="true">Léxico</a>
+      <a class="nav-item nav-link" id="nav-sintactico-tab" data-toggle="tab" href="#nav-sintactico" role="tab" aria-controls="nav-sintactico" aria-selected="false">Sintático</a>
+    </div>
+  </nav>
+  <div class="tab-content p-3" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-lexico" role="tabpanel" aria-labelledby="nav-lexico-tab">
+      <app-lexico [lexico]="data.lexico"></app-lexico>
+    </div>
+    <div class="tab-pane fade" id="nav-sintactico" role="tabpanel" aria-labelledby="nav-sintactico-tab">
+
+    </div>
+  </div>
+</div>
 </div>
