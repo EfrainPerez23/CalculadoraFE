@@ -1,7 +1,15 @@
-@import '~src/assets/scss/_colors';
+@import "~src/assets/scss/_colors";
+
+.CodeMirror.cm-s-material {
+  height: 30px !important;
+}
+
 .calc-tabs {
   .nav-tabs a {
     width: 50%;
+    &.semantic {
+      width: 33.33%;
+    }
     color: $black;
     transition: 0.2s;
     &.active {

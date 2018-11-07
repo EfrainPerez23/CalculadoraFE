@@ -4,31 +4,38 @@
   <h4>Por favor introduzca las sentencias a analizar</h4>
   <small class="text-danger">** Ésta calculadora no permite números flotantes</small>
 
-  <ngx-codemirror [(ngModel)]="calculator"
-  [options]="{
-    lineNumbers: true,
+  <ngx-codemirror [(ngModel)]="calculator" [options]="{
+    lineNumbers: false,
     theme: 'material',
-    mode: 'text/typescript'
-  }"
-></ngx-codemirror>
-  <div>
-      <button type="button" class="btn btn-primary my-4" [disabled]="!calculator" (click)="calcular()">Calcular</button>
-  </div>
+    mode: 'text/typescript',
+    height: '30px'
+  }"></ngx-codemirror>
 
-<div class="calc-tabs" *ngIf="data" >
-  <nav>
-    <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-lexico-tab" data-toggle="tab" href="#nav-lexico" role="tab" aria-controls="nav-lexico" aria-selected="true">Léxico</a>
-      <a class="nav-item nav-link" id="nav-sintactico-tab" data-toggle="tab" href="#nav-sintactico" role="tab" aria-controls="nav-sintactico" aria-selected="false">Sintático</a>
-    </div>
-  </nav>
-  <div class="tab-content p-3" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-lexico" role="tabpanel" aria-labelledby="nav-lexico-tab">
-      <app-lexico [lexico]="data.lexico"></app-lexico>
-    </div>
-    <div class="tab-pane fade" id="nav-sintactico" role="tabpanel" aria-labelledby="nav-sintactico-tab">
+  <button type="button" class="btn btn-primary my-4" [disabled]="!calculator" (click)="calcular()">Calcular</button>
 
+  <div class="calc-tabs" *ngIf="data">
+    <nav>
+      <div class="nav nav-tabs mt-4" id="nav-tab" role="tablist">
+        <a [ngClass]="{'semantic' : data.result.errors.length > 0}" class="nav-item nav-link active" id="nav-sintactico-tab" data-toggle="tab" href="#nav-sintactico" role="tab"
+          aria-controls="nav-sintactico" aria-selected="true">Sintático</a>
+        <a [ngClass]="{'semantic' : data.result.errors.length > 0}" class="nav-item nav-link" id="nav-lexico-tab" data-toggle="tab" href="#nav-lexico" role="tab" aria-controls="nav-lexico"
+          aria-selected="false">Léxico</a>
+
+        <a [ngClass]="{'semantic' : data.result.errors.length > 0}" *ngIf="data.result.errors.length > 0" class="nav-item nav-link" id="nav-semantico-tab" data-toggle="tab" href="#nav-semantico" role="tab"
+          aria-controls="nav-semantico" aria-selected="false">Semántico</a>
+      </div>
+    </nav>
+    <div class="tab-content p-3" id="nav-tabContent">
+      <div class="tab-pane active" id="nav-sintactico" role="tabpanel" aria-labelledby="nav-sintactico-tab">
+        <h1 class="text-center">Resultado: <span countUp [endVal]="data.result.value" decimals="4">0</span></h1>
+      </div>
+      <div class="tab-pane fade show" id="nav-lexico" role="tabpanel" aria-labelledby="nav-lexico-tab">
+        <app-lexico [lexico]="data.lexico"></app-lexico>
+      </div>
+
+      <div class="tab-pane fade" id="nav-semantico" role="tabpanel" aria-labelledby="nav-semantico-tab" *ngIf="data.result.errors.length > 0">
+        <app-semantic [semantico]="data.result.errors"></app-semantic>
+      </div>
     </div>
   </div>
-</div>
 </div>

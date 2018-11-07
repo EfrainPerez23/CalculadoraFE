@@ -1,0 +1,16 @@
+<div class="table-responsive" *ngIf="semantico.length > 0">
+    <table class="table table-borderless">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of semantico">
+          <td>{{data.type}}</td>
+          <td>{{data.value}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

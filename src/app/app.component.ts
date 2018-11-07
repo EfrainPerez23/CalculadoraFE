@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CalculatorService } from './calculator.service';
 import { AnalizadorLexico } from './lexico/model/analizador-lexico';
+import { Result } from './models/result';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +9,20 @@ import { AnalizadorLexico } from './lexico/model/analizador-lexico';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   public calculator = '';
-  public data: {result: string[], lexico: AnalizadorLexico[]};
+  public data: { result: Result; lexico: AnalizadorLexico[] };
 
-  public constructor(private calculatorService: CalculatorService) {  }
+  public constructor(private calculatorService: CalculatorService) {}
+
 
   public calcular(): void {
-    this.calculatorService.calculate({data: this.calculator}).subscribe((data: {result: string[], lexico: AnalizadorLexico[]}): void => {
-      if (data) {
-        this.data = data;
+    this.data = null;
+    this.calculatorService.calculate({ data: this.calculator }).subscribe(
+      (data: { result: Result; lexico: AnalizadorLexico[] }): void => {
+        if (data) {
+          this.data = data;
+        }
       }
-    });
+    );
   }
 }
